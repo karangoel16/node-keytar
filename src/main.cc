@@ -5,39 +5,39 @@ namespace {
 
 NAN_METHOD(SetPassword) {
   SetPasswordWorker* worker = new SetPasswordWorker(
-    *v8::String::Utf8Value(info[0]),
-    *v8::String::Utf8Value(info[1]),
-    *v8::String::Utf8Value(info[2]),
-    new Nan::Callback(info[3].As<v8::Function>()));
+    *Nan::Utf8String(info[0]),
+    *Nan::Utf8String(info[1]),
+    *Nan::Utf8String(info[2]),
+    new Nan::Callback(Nan::To<v8::Function>(info[3]).ToLocalChecked()));
   Nan::AsyncQueueWorker(worker);
 }
 
 NAN_METHOD(GetPassword) {
   GetPasswordWorker* worker = new GetPasswordWorker(
-    *v8::String::Utf8Value(info[0]),
-    *v8::String::Utf8Value(info[1]),
-    new Nan::Callback(info[2].As<v8::Function>()));
+    *Nan::Utf8String(info[0]),
+    *Nan::Utf8String(info[1]),
+    new Nan::Callback(Nan::To<v8::Function>(info[2]).ToLocalChecked()));
   Nan::AsyncQueueWorker(worker);
 }
 
 NAN_METHOD(DeletePassword) {
   DeletePasswordWorker* worker = new DeletePasswordWorker(
-    *v8::String::Utf8Value(info[0]),
-    *v8::String::Utf8Value(info[1]),
-    new Nan::Callback(info[2].As<v8::Function>()));
+    *Nan::Utf8String(info[0]),
+    *Nan::Utf8String(info[1]),
+    new Nan::Callback(Nan::To<v8::Function>(info[2]).ToLocalChecked()));
   Nan::AsyncQueueWorker(worker);
 }
 
 NAN_METHOD(FindPassword) {
   FindPasswordWorker* worker = new FindPasswordWorker(
-    *v8::String::Utf8Value(info[0]),
+    *Nan::Utf8String(info[0]),
     new Nan::Callback(info[1].As<v8::Function>()));
   Nan::AsyncQueueWorker(worker);
 }
 
 NAN_METHOD(FindCredentials) {
   FindCredentialsWorker* worker = new FindCredentialsWorker(
-    *v8::String::Utf8Value(info[0]),
+    *Nan::Utf8String(info[0]),
     new Nan::Callback(info[1].As<v8::Function>()));
   Nan::AsyncQueueWorker(worker);
 }

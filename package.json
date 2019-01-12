@@ -51,7 +51,7 @@
     "prebuild": "^8.0.1"
   },
   "dependencies": {
-    "nan": "2.8.0",
+    "nan": "2.12.1",
     "prebuild-install": "^5.0.0"
   }
 }
