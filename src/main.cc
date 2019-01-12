@@ -31,14 +31,14 @@ NAN_METHOD(DeletePassword) {
 NAN_METHOD(FindPassword) {
   FindPasswordWorker* worker = new FindPasswordWorker(
     *Nan::Utf8String(info[0]),
-    new Nan::Callback(info[1].As<v8::Function>()));
+     new Nan::Callback(Nan::To<v8::Function>(info[1]).ToLocalChecked()));
   Nan::AsyncQueueWorker(worker);
 }
 
 NAN_METHOD(FindCredentials) {
   FindCredentialsWorker* worker = new FindCredentialsWorker(
     *Nan::Utf8String(info[0]),
-    new Nan::Callback(info[1].As<v8::Function>()));
+     new Nan::Callback(Nan::To<v8::Function>(info[1]).ToLocalChecked()));
   Nan::AsyncQueueWorker(worker);
 }
 
